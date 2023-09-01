@@ -11,9 +11,9 @@ class ProjectController extends Controller
     public function index(Request $request)
     {   
         if ($request->has('search')){
-            $projects = Project::with('type', 'technologies')->where('title', 'LIKE', '%' . $request->search . '%')->paginate(20);
+            $projects = Project::with('type', 'technologies')->where('title', 'LIKE', '%' . $request->search . '%')->paginate(12);
         } else {
-            $projects = Project::with('type', 'technologies')->paginate(20);
+            $projects = Project::with('type', 'technologies')->paginate(12);
         }
 
         return response()->json([
